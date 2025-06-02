@@ -1,0 +1,371 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+  /* Dark mode (Matrix theme) */
+  .dark-mode {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 120 100% 50%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 120 100% 50%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 120 100% 25%;
+    --input: 0 0% 20%;
+    --ring: 120 100% 50%;
+    --radius: 0.5rem;
+  }
+
+  /* Light mode (Day theme) */
+  .light-mode {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
+    --card: 0 0% 95%;
+    --card-foreground: 0 0% 10%;
+    --popover: 0 0% 95%;
+    --popover-foreground: 0 0% 10%;
+    --primary: 142 76% 36%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 90%;
+    --secondary-foreground: 0 0% 20%;
+    --muted: 0 0% 90%;
+    --muted-foreground: 0 0% 40%;
+    --accent: 142 76% 36%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 120 30% 30%;
+    --input: 0 0% 85%;
+    --ring: 142 76% 36%;
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  /* Base body styles */
+  body {
+    @apply font-mono antialiased transition-colors duration-300;
+    font-family: 'Share Tech Mono', Consolas, monospace;
+    background-size: cover;
+  }
+
+  /* Dark mode specific styles */
+  .dark-mode body {
+    @apply bg-black text-white;
+    background-image: radial-gradient(circle at center, rgba(0, 255, 65, 0.05), transparent 80%);
+    background-color: #000000;
+    animation: bg-pulse-dark 10s ease-in-out infinite;
+  }
+
+  /* Light mode specific styles */
+  .light-mode body {
+    @apply bg-gray-50 text-gray-900;
+    background-image: radial-gradient(circle at center, rgba(16, 185, 129, 0.05), transparent 80%);
+    background-color: #f9fafb;
+    animation: bg-pulse-light 10s ease-in-out infinite;
+  }
+
+  ::selection {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .dark-mode ::-webkit-scrollbar-track {
+    @apply bg-black;
+  }
+
+  .light-mode ::-webkit-scrollbar-track {
+    @apply bg-gray-200;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/50 rounded;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/80;
+  }
+
+  code {
+    @apply bg-muted text-primary px-1 py-0.5 rounded text-sm;
+  }
+
+  a {
+    @apply text-primary hover:underline transition-all duration-150;
+  }
+
+  button,
+  .btn {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  /* Dark mode animation */
+  @keyframes bg-pulse-dark {
+
+    0%,
+    100% {
+      background-color: #000000;
+    }
+
+    50% {
+      background-color: #001a00;
+    }
+  }
+
+  /* Light mode animation */
+  @keyframes bg-pulse-light {
+
+    0%,
+    100% {
+      background-color: #f9fafb;
+    }
+
+    50% {
+      background-color: #f0f9f5;
+    }
+  }
+
+  /* Animation for elements appearing */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes glitch {
+    0% {
+      text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75), -0.05em -0.025em 0 rgba(0, 255, 0, 0.75), -0.025em 0.05em 0 rgb(0, 16, 138, 0.75);
+    }
+
+    14% {
+      text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75), -0.05em -0.025em 0 rgba(0, 255, 0, 0.75), -0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+
+    15% {
+      text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75), 0.025em 0.025em 0 rgba(0, 255, 0, 0.75), -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+
+    49% {
+      text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75), 0.025em 0.025em 0 rgba(0, 255, 0, 0.75), -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+
+    50% {
+      text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75), 0.05em 0 0 rgb(247, 253, 247, 0.75), 0 -0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+
+    99% {
+      text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75), 0.05em 0 0 rgba(0, 255, 0, 0.75), 0 -0.05em 0 rgb(255, 255, 255, 0.75);
+    }
+
+    100% {
+      text-shadow: -0.025em 0 0 rgb(245, 240, 240, 0.75), -0.025em -0.025em 0 rgba(0, 255, 0, 0.75), -0.025em -0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+  }
+}
+
+@layer components {
+
+  /* Dark mode specific component styles */
+  .dark-mode .matrix-text-shadow {
+    text-shadow: 0 0 10px rgba(0, 255, 65, 0.8), 0 0 20px rgba(0, 255, 65, 0.4);
+  }
+
+  .dark-mode .matrix-box-shadow {
+    box-shadow: 0 0 8px rgba(0, 255, 65, 0.4), 0 0 15px rgba(0, 255, 65, 0.3);
+  }
+
+  .dark-mode .red-text-shadow {
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+  }
+
+  .dark-mode .red-box-shadow {
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.4), 0 0 12px rgba(255, 0, 0, 0.3);
+  }
+
+  .dark-mode .blue-text-shadow {
+    text-shadow: 0 0 10px rgba(0, 0, 255, 0.7);
+  }
+
+  .dark-mode .blue-box-shadow {
+    box-shadow: 0 0 8px rgba(0, 0, 255, 0.4), 0 0 12px rgba(0, 0, 255, 0.3);
+  }
+
+  .dark-mode .neon-border-hover:hover {
+    box-shadow: 0 0 5px rgba(0, 255, 65, 0.8), 0 0 15px rgba(0, 255, 65, 0.5);
+    border-color: #00ff41;
+  }
+
+  /* Light mode specific component styles */
+  .light-mode .matrix-text-shadow {
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.5), 0 0 20px rgba(16, 185, 129, 0.3);
+  }
+
+  .light-mode .matrix-box-shadow {
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.3), 0 0 15px rgba(16, 185, 129, 0.2);
+  }
+
+  .light-mode .red-text-shadow {
+    text-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
+  }
+
+  .light-mode .red-box-shadow {
+    box-shadow: 0 0 8px rgba(220, 38, 38, 0.3), 0 0 12px rgba(220, 38, 38, 0.2);
+  }
+
+  .light-mode .blue-text-shadow {
+    text-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
+  }
+
+  .light-mode .blue-box-shadow {
+    box-shadow: 0 0 8px rgba(37, 99, 235, 0.3), 0 0 12px rgba(37, 99, 235, 0.2);
+  }
+
+  .light-mode .neon-border-hover:hover {
+    box-shadow: 0 0 5px rgba(16, 185, 129, 0.5), 0 0 15px rgba(16, 185, 129, 0.3);
+    border-color: #10b981;
+  }
+
+  /* Shared component styles */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+  }
+
+  .visible {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+
+  /* Card and container styles */
+  .matrix-card {
+    @apply rounded-lg border transition-all duration-300;
+  }
+
+  .dark-mode .matrix-card {
+    @apply bg-black/80 border-[#00FF41] text-white;
+  }
+
+  .light-mode .matrix-card {
+    @apply bg-white/90 border-emerald-500 text-gray-800;
+  }
+
+  /* Button styles */
+  .matrix-button {
+    @apply px-4 py-2 rounded-md transition-all duration-300 font-medium;
+  }
+
+  .dark-mode .matrix-button {
+    @apply bg-transparent border border-[#00FF41] text-white hover:bg-[#00FF41]/20;
+  }
+
+  .light-mode .matrix-button {
+    @apply bg-transparent border border-emerald-500 text-gray-800 hover:bg-emerald-500/20;
+  }
+
+  /* Red pill specific */
+  .dark-mode .red-pill-button {
+    @apply bg-transparent border border-[#FF0000] text-white hover:bg-[#FF0000]/20;
+  }
+
+  .light-mode .red-pill-button {
+    @apply bg-transparent border border-red-500 text-gray-800 hover:bg-red-500/20;
+  }
+
+  /* Blue pill specific */
+  .dark-mode .blue-pill-button {
+    @apply bg-transparent border border-[#0000FF] text-white hover:bg-[#0000FF]/20;
+  }
+
+  .light-mode .blue-pill-button {
+    @apply bg-transparent border border-blue-500 text-gray-800 hover:bg-blue-500/20;
+  }
+
+  /* Animation classes */
+  .animate-fadeIn {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-glitch {
+    animation: glitch 3s infinite;
+  }
+
+  @keyframes glitch {
+    0% {
+      text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+        -0.05em -0.025em 0 rgba(0, 255, 0, 0.75),
+        0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+
+    14% {
+      text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+        -0.05em -0.025em 0 rgba(0, 255, 0, 0.75),
+        0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+
+    15% {
+      text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
+        0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
+        -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+
+    49% {
+      text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
+        0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
+        -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+
+    50% {
+      text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
+        0.05em 0 0 rgba(0, 255, 0, 0.75),
+        0 -0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+
+    99% {
+      text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
+        0.05em 0 0 rgba(0, 255, 0, 0.75),
+        0 -0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+
+    100% {
+      text-shadow: -0.025em 0 0 rgba(255, 0, 0, 0.75),
+        -0.025em -0.025em 0 rgba(0, 255, 0, 0.75),
+        -0.025em -0.05em 0 rgb(255, 255, 255, 0.75);
+    }
+  }
+}

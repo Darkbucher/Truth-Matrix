@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: truthmatrix
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SESSION_SECRET
+        sync: false
+      - key: GOOGLE_AI_API_KEY
+        sync: false 
