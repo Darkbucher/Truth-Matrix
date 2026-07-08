@@ -21,8 +21,8 @@
 | Frontend | Backend | AI & Security |
 |----------|---------|---------------|
 | 🚀 Modern React with TypeScript | ⚡ Express.js Server | 🤖 Google AI Integration |
-| 🎨 Tailwind CSS & Radix UI | 🔒 Passport Authentication | 🔄 Real-time WebSocket |
-| 📱 Responsive Design | 💾 In-memory Session Management | 📊 Data Visualization |
+| 🎨 Tailwind CSS & Radix UI | 🔒 Passport Authentication | 🔍 Tavily Search API (RAG) |
+| 📱 Responsive Design | 💾 Neon PostgreSQL (Drizzle) | 📊 Data Visualization |
 
 </div>
 
@@ -39,9 +39,10 @@
 ### Backend
 - **Express.js** - Fast, unopinionated web framework
 - **TypeScript** - Type-safe backend development
-- **Passport.js** - Authentication middleware
-- **WebSocket** - Real-time communication
-- **In-memory Storage** - Session management
+- **Neon (PostgreSQL)** - Serverless relational database
+- **Drizzle ORM** - TypeScript ORM for interacting with the database
+- **Google Gemini API** - LLM-powered verification synthesis
+- **Tavily Search API** - Web search agent for grounding verification in live data
 
 ## 🚀 Quick Start
 
@@ -60,7 +61,9 @@
    Create a `.env` file in the root directory:
    ```env
    SESSION_SECRET=your_session_secret
-   GOOGLE_AI_API_KEY=your_google_ai_api_key
+   GOOGLE_AI_API_KEY=your_google_api_key
+   TAVILY_API_KEY=your_tavily_api_key
+   DATABASE_URL="postgresql://user:pass@ep-host.aws.neon.tech/neondb?sslmode=require"
    ```
 
 4. **Start Development**
@@ -130,7 +133,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## ⚠️ Important Note
 
-This version uses in-memory storage for session management and temporary data. All data is cleared on server restart.
+The app now uses a Neon serverless PostgreSQL database to persist fact-check verifications. If deploying to production, ensure you push the Drizzle schema to your production DB using `npx drizzle-kit push`.
 
 ---
 

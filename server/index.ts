@@ -1,14 +1,9 @@
+import "dotenv/config";
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
-import { sessionConfig } from "./storage";
-import session from "express-session";
 import cors from "cors";
-import dotenv from "dotenv";
 import path from "path";
-
-// Load environment variables from .env file
-dotenv.config({ path: path.resolve(process.cwd(), '.env') });
 
 // Add custom error type
 class AppError extends Error {
@@ -37,8 +32,6 @@ app.use(cors({
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(session(sessionConfig));
-
 // Add rate limiting
 const rateLimit = new Map<string, { count: number; resetTime: number }>();
 const RATE_LIMIT_WINDOW = process.env.NODE_ENV === 'development' ? 10000 : 60000; // 10 seconds in dev, 1 minute in prod
